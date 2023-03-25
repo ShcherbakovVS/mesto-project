@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vladislav Scherbakov">
+    <meta name="description" content="Социальная сеть, связанная с путешествиями, где можно создать свой профиль, выкладывать фотографии, ставить сердечки">
+    <meta name="keywords" content="Mesto, путешествие, туризм, социальная сеть">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="logo" src="./images/mesto.svg" alt="Mesto">
+        </header>
+        <main>
+            <section class="profile">
+                <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Аватарка">
+                <div class="profile__info">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__edit link" type="submit" name="edit" value="edit"></button>
+                    <p class="profile__description">Исследователь океана</p>
+                </div>
+                <button class="profile__add link" type="submit" name="add" value="add"></button>
+            </section>
+            <section class="elements">
+                <div class="elements__element">
+                    <img class="elements__image" src="./images/element-karatschajewo.jpg" alt="Карачаевск">
+                    <div class="elements__header">
+                        <h2 class="elements__title">Карачаевск</h2>
+                        <button class="elements__like elements__like_hover" type="submit" name="like" value="like1"></button>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img class="elements__image" src="./images/element-elbrus.jpg" alt="Эльбрус">
+                    <div class="elements__header">
+                        <h2 class="elements__title">Гора Эльбрус</h2>
+                        <button class="elements__like elements__like_hover" type="submit" name="like" value="like2"></button>
+                    </div> 
+                </div>
+                <div class="elements__element">
+                    <img class="elements__image" src="./images/element-dombai.jpg" alt="Домбай">
+                    <div class="elements__header">
+                        <h2 class="elements__title">Домбай</h2>
+                        <button class="elements__like elements__like_hover" type="submit" name="like" value="like3"></button>  
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img class="elements__image" src="./images/element-elbrus.jpg" alt="Эльбрус">
+                    <div class="elements__header">
+                        <h2 class="elements__title">Гора Эльбрус</h2>
+                        <button class="elements__like elements__like_hover" type="submit" name="like" value="like4"></button>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img class="elements__image" src="./images/element-dombai.jpg" alt="Домбай">
+                    <div class="elements__header">
+                        <h2 class="elements__title">Домбай</h2>
+                        <button class="elements__like elements__like_hover" type="submit" name="like" value="like5"></button>
+                    </div>
+                </div>
+                <div class="elements__element">
+                    <img class="elements__image" src="./images/element-karatschajewo.jpg" alt="Карачаевск">
+                    <div class="elements__header">
+                        <h2 class="elements__title">Карачаево-Черкессия</h2>
+                        <button class="elements__like elements__like_hover" type="submit" name="like" value="like6"></button>
+                    </div>
+                </div>
+            </section>
+            <section class="popup">
+                <form class="popup__container">
+                    <button class="popup__close link" type="submit" name="close" value="close"></button>
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <input class="popup__input-text" type="text" name="name" value="Жак-Ив Кусто" required>
+                    <input class="popup__input-text" type="text" name="description" value="Исследователь океана" required>
+                    <button class="popup__save" type="submit" name="save" value="Сохранить"><span class="popup__text-save">Сохранить</span></button>
+                </form> 
+            </section>
+        </main>
+        <footer>
+            <p class="footer">© 2020 Mesto Russia</p>
+        </footer>
+    </div>
+</body>
+</html>

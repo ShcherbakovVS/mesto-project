@@ -1,0 +1,21 @@
+.elements__like {
+    margin: 30px 20px 0 0;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    border: none;
+    background-color: white;
+    position: relative;
+}
+
+.elements__like::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../../../images/like-white.svg);
+    width: 22px;
+    height: 19px;
+    background-position: center;
+}
+

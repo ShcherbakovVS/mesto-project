@@ -1,0 +1,21 @@
+.profile__edit {
+    margin-top: 15px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #fff;
+    padding: 0;
+    background-color: #000;
+    background-image: url(../../../images/pencil.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 10px;
+}
+
+@media screen and (max-width: 580px) {
+    .profile__edit {
+        margin: 8px 19px 0 0;
+        width: 18px;
+        height: 18px;
+        background-size: 7.5px;
+    }
+}
