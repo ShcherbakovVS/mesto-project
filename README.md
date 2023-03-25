@@ -1,6 +1,6 @@
 # Проект: Место
 
-[Ссылка на проект:]()
+[Ссылка на проект:](https://shcherbakovvs.github.io/mesto-project/)
 
 ### Обзор
 
