@@ -4,9 +4,11 @@
     line-height: 22px;
     font-weight: 400;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 845px) {
     .profile__description {
         font-size: 14px;
         line-height: 17px;

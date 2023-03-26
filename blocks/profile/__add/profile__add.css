@@ -1,17 +1,13 @@
 .profile__add {
     margin: 35px 0 0 auto;
     border: 2px solid #fff;
-    background-color: #000;
     width: 150px;
     height: 50px;
     padding: 0;
-    background-image: url(../../../images/plus.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 22px;
+    background: #000 url(../../../images/plus.svg) no-repeat center/22px;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 845px) {
     .profile__add {
         margin: 36px auto 0;
         width: 100%;

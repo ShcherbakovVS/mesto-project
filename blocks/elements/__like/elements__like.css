@@ -19,3 +19,7 @@
     background-position: center;
 }
 
+.elements__like:hover {
+    opacity: .5;
+    cursor: pointer;
+}
