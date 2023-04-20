@@ -10,6 +10,10 @@
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
+.popup__input-text::placeholder {
+    color: #C4C4C4;
+}
+
 @media screen and (max-width: 525px) {
     .popup__input-text {
         width: 84.397%;
