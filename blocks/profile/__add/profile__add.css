@@ -5,6 +5,7 @@
     height: 50px;
     padding: 0;
     background: #000 url(../../../images/plus.svg) no-repeat center/22px;
+    flex-shrink: 0;
 }
 
 @media screen and (max-width: 845px) {
