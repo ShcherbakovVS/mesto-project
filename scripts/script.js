@@ -16,6 +16,8 @@ const jobInput = formElementEdit.querySelector('#description');
 const nameProf = document.querySelector('.profile__name');
 const jobProf = document.querySelector('.profile__description');
 const elements = document.querySelector('.elements');
+const bigImg = popupImage.querySelector('.popup__image');
+const popupImageTitle = popupImage.querySelector('.popup__title-place');
 
 function openPopup(pop) {
     pop.classList.add('popup_opened');
@@ -67,10 +69,9 @@ function createCard(img, name) {
     });
     image.addEventListener('click', () => {
         openPopup(popupImage);
-        const bigImg = popupImage.querySelector('.popup__image');
         bigImg.src = image.src;
         bigImg.alt = title.textContent;
-        popupImage.querySelector('.popup__title-place').textContent = title.textContent; 
+        popupImageTitle.textContent = title.textContent; 
     });
     return cardElement;
 }
