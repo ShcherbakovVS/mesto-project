@@ -11,3 +11,7 @@
         width: 282px;
     }
 }
+
+.popup__window:hover {
+    cursor: default;
+}

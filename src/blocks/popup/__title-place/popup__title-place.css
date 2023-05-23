@@ -7,4 +7,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.popup__title-place:hover {
+    cursor: default;
 }
