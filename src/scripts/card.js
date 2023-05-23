@@ -1,7 +1,8 @@
 import { initialCards } from "./data.js";
-import { bigImg, popupImageTitle, openPopup, popupImage } from "./modal.js";
+import { popupImageTitle, openPopup, popupImage } from "./modal.js";
 
 const template = document.querySelector('#template-card').content;
+const bigImg = popupImage.querySelector('.popup__image');
 export const elements = document.querySelector('.elements');
 
 export function createCard(img, name) {
