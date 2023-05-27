@@ -1,6 +1,6 @@
 import '../pages/index.css';
 import { elements, createCard, cardForRemoving, idCardForRemoving } from "./card.js";
-import { crosses, nameInput, jobInput, formElementEdit, openPopup, closePopup, formElementAdd, popups, popupEdit, popupAdd, nameInputAdd, imgInputAdd, buttonRemovingCard, popupDelete, popupAvatarChange, formElementAvatarChange, avatarUrl } from './modal.js';
+import { crosses, openPopup, closePopup, popups, popupEdit, popupAdd, buttonRemovingCard, popupDelete, popupAvatarChange} from './modal.js';
 import { toggleButtonState, checkInputValidity, enableValidation } from './validate.js';
 import { getDataUser, updateDataUser, addNewCard, deleteCard, changeAvatar, getInitialCards } from "./api.js";
 
@@ -11,22 +11,24 @@ export const nameProf = document.querySelector('.profile__name');
 export const jobProf = document.querySelector('.profile__description');
 export let idOwner;
 const avatar = document.querySelector('.profile__avatar');
+const formElementEdit = popupEdit.querySelector('.popup__container');
+const formElementAdd = popupAdd.querySelector('.popup__container');
+const formElementAvatarChange = popupAvatarChange.querySelector('.popup__container');
+const avatarUrl = formElementAvatarChange.querySelector('#avatarUrl');
+const nameInputAdd = formElementAdd.querySelector('#placeName');
+const imgInputAdd = formElementAdd.querySelector('#placeImg');
+const nameInput = formElementEdit.querySelector('#name');
+const jobInput = formElementEdit.querySelector('#description');
 
-getDataUser()
-    .then(res => {
-        avatar.src = res.avatar;
-        nameProf.textContent = res.name;
-        jobProf.textContent = res.about;
-        idOwner = res._id;
-        getInitialCards()
-            .then((res) => {
-                res.forEach((card) => {
-                    elements.append(createCard(card.link, card.name, card.likes.length, card.owner._id, card._id));
-                })
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+Promise.all([getDataUser(), getInitialCards()])
+    .then(([info, initialCards]) => {
+        avatar.src = info.avatar;
+        nameProf.textContent = info.name;
+        jobProf.textContent = info.about;
+        idOwner = info._id;
+        initialCards.forEach((card) => {
+            elements.append(createCard(card.link, card.name, card.likes.length, card.owner._id, card._id));
+        });
     })
     .catch((err) => {
         console.log(err);
@@ -53,10 +55,12 @@ function handleFormSubmitEdit(evt) {
             nameProf.textContent = res.name;
             jobProf.textContent = res.about;
             closePopup(popupEdit);
-            submitButton.textContent = 'Сохранить';
         })
         .catch((err) => {
             console.log(err);
+        })
+        .finally(() => {
+            submitButton.textContent = 'Сохранить';
         });
     
 }
@@ -77,6 +81,9 @@ function handleFormSubmitAdd(evt) {
         })
         .catch((err) => {
             console.log(err);
+        })
+        .finally(() => {
+            submitButton.textContent = 'Создать';
         });
 }
 
@@ -136,9 +143,11 @@ formElementAvatarChange.addEventListener('submit', evt => {
             avatar.src = res.avatar;
             closePopup(popupAvatarChange);
             formElementAvatarChange.reset();
-            submitButton.textContent = 'Сохранить';
         })
         .catch((err) => {
             console.log(err);
-        });
+        })
+        .finally(() => {
+            submitButton.textContent = 'Сохранить';
+        })
 })

@@ -1,6 +1,6 @@
 import { idOwner } from "./index.js";
 import { likeCard, dislikeCard } from "./api.js";
-import { popupImageTitle, openPopup, popupImage, popupDelete, buttonRemovingCard, closePopup } from "./modal.js";
+import { popupImageTitle, openPopup, popupImage, popupDelete } from "./modal.js";
 
 const template = document.querySelector('#template-card').content;
 const bigImg = popupImage.querySelector('.popup__image');
