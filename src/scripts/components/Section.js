@@ -1,5 +1,5 @@
-export default class Selector {
-    constructor({ items, renderer }, selector) {
+export default class Section {
+    constructor({ items = '', renderer = () => {} }, selector) {
         this._renderedItems = items;
         this._renderer = renderer;
 
@@ -10,7 +10,11 @@ export default class Selector {
         this._renderedItems.forEach(item => this._renderer(item))
         }
 
-    addItem(element) {
+    addItemToStart(element) {
+        this._container.prepend(element);
+    }
+
+    addItemToEnd(element) {
         this._container.append(element);
     }
 }

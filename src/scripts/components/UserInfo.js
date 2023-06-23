@@ -1,30 +1,27 @@
 export default class UserInfo {
-    constructor({ nameSelector, userInfoSelector, imgSelector }, userDataReceivingAPI, userDataUpdatingAPI) {
+    constructor({ nameSelector, userInfoSelector, imgSelector }, userDataUpdatingAPI) {
         this.nameElement = document.querySelector(nameSelector);
         this.userInfoElement = document.querySelector(userInfoSelector);
         this.avatarElement = document.querySelector(imgSelector);
-        this._userDataReceivingAPI = userDataReceivingAPI;
         this._userDataUpdatingAPI = userDataUpdatingAPI;
         this.ownerId = '';
     }
 
     getUserInfo() {
-        return this._userDataReceivingAPI()
-            .then(info => { return {
-                name: info.name,
-                about: info.about,
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        return {
+            name: this.nameElement.textContent,
+            about: this.userInfoElement.textContent,
+            img: this.avatarElement.src
+        }
     }
 
     setUserInfo(name, about) {
-        return this._userDataUpdatingAPI(name, about)
-            .then(res => {
-                this.nameElement.textContent = res.name;
-                this.userInfoElement.textContent = res.about;
-            })
+        this.nameElement.textContent = name;
+        this.userInfoElement.textContent = about;
+        return this._userDataUpdatingAPI(name, about);
+    }
+
+    setUserAvatar(src) {
+        this.avatarElement.src = src;
     }
 }

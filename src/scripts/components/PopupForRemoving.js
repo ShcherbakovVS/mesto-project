@@ -1,18 +1,18 @@
 import Popup from "./Popup";
 
 export default class PopupForRemoving extends Popup {
-    constructor(selector, cardRemoving) {
+    constructor(selector, removedItem) {
         super(selector);
-        this.cardForRemoving = '';
-        this.cardIdForRemoving = '';
-        this._cardRemoving = cardRemoving;
+        this.itemForRemoving = '';
+        this.itemIdForRemoving = '';
+        this._removedItem = removedItem;
     }
 
     setEventListeners() {
         super.setEventListeners();
 
         this.popupElement.querySelector('.popup__save_margin_less').addEventListener('click', () => {
-            this._cardRemoving();
+            this._removedItem();
         })
     }
 }

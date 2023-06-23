@@ -20,8 +20,10 @@ export const cardListSection = '.elements';
 
 export const popups = {};
 
-export const buttonOnAvatar = document.querySelector('.profile__avatar-change');
+export const validators = {};
 
-export const adding = document.querySelector('.profile__add');
+export const popupAvatarOpenButton = document.querySelector('.profile__avatar-change');
 
-export const editing = document.querySelector('.profile__edit');
+export const popupCardAddingOpenButton = document.querySelector('.profile__add');
+
+export const PopupProfileOpenButton = document.querySelector('.profile__edit');

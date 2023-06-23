@@ -1,7 +1,8 @@
 export default class Card {
-    constructor({ link, name, likes, owner, _id }, selector, handleCardClick, likeCardApi, dislikeCardApi, handleCardRemoving) {
+    constructor({ link = '', name = '', likes = '', owner = '', _id = '' }, selector = '', handleCardClick = () => {}, likeCardApi = () => {}, dislikeCardApi = () => {}, handleCardRemoving = () => {}) {
         this._img = link;
         this._name = name;
+        this._likesId = likes;
         this._likes = likes.length;
         this._cardOwnerId = owner._id;
         this._cardId = _id;
@@ -22,9 +23,9 @@ export default class Card {
         return cardElement;
     }
 
-    _setEventListeners(ownerId) {
+    _setEventListeners() {
         this._element.querySelector('.elements__like').addEventListener('click', evt => {
-            this._handleLikeClick(evt, ownerId);
+            this._handleLikeClick(evt);
         });
 
         this._image.addEventListener('click', () => {
@@ -34,18 +35,14 @@ export default class Card {
         this._trash.addEventListener('click', () => {
             this._handleTrashClick();
         })
+
     }
 
-    _handleLikeClick(evt, ownerId) {
+    _handleLikeClick(evt) {
         if (!evt.target.classList.contains('elements__like_actived')) {
             this._likeCardApi(this._cardId)
                 .then(res => {
-                    if (res.likes.some((like) => {
-                        return like._id === ownerId
-                    })) {
-                        evt.target.classList.add('elements__like_actived');
-                    }
-                    this._like.textContent = res.likes.length;
+                    this.likeCard(res.likes.length);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -53,12 +50,7 @@ export default class Card {
         } else {
             this._dislikeCardApi(this._cardId)
                 .then(res => {
-                    if (!(res.likes.some((like) => {
-                        return like._id === ownerId
-                    }))) {
-                        evt.target.classList.remove('elements__like_actived');
-                    }
-                    this._like.textContent = res.likes.length;
+                    this.dislikeCard(res.likes.length);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -74,6 +66,20 @@ export default class Card {
         this._handleCardRemoving(this._element, this._cardId);
     }
 
+    likeCard(count) {
+        this._element.querySelector('.elements__like').classList.add('elements__like_actived');
+        this._like.textContent = count;
+    }
+    
+    dislikeCard(count) {
+        this._element.querySelector('.elements__like').classList.remove('elements__like_actived');
+        this._like.textContent = count;
+    }
+
+    deleteCard(cardElement) {
+        cardElement.remove();
+    }
+
     generate(ownerId) {
         this._element = this._getElement();
         this._image = this._element.querySelector('.elements__image');
@@ -87,13 +93,14 @@ export default class Card {
         this._title.textContent = this._name;
         this._like.textContent = this._likes;
 
+        this._likesId.some(likeId => likeId._id === ownerId) ? this.likeCard(this._likes) : this._like.textContent = this._likes;
+
         if (this._cardOwnerId !== ownerId) {
             this._trash.remove();
         }
 
-        this._setEventListeners(ownerId);
+        this._setEventListeners();
 
         return this._element;
-
     }
 }
