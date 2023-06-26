@@ -17,12 +17,12 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        this._formContainer = this.popupElement.querySelector('.popup__container');
+        this.formContainer = this.popupElement.querySelector('.popup__container');
         
-        this._formContainer.addEventListener('submit', (evt) => {
+        this.formContainer.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._submitButton = this._formContainer.querySelector('.popup__save');
-            this._submitButton.textContent = 'Сохранение...';
+            this.submitButton = this.formContainer.querySelector('.popup__save');
+            this.submitButton.textContent = 'Сохранение...';
 
             this._formSubmiting(this._getInputValues());
         }) 
@@ -31,6 +31,6 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();
 
-        this._formContainer.reset();
+        this.formContainer.reset();
     }
 }

@@ -44,7 +44,7 @@ popups.editing = new PopupWithForm('.popup_type_edit', (inputValues) => {
             console.log(err);
         })
         .finally(() => {
-            popups.editing._submitButton.textContent = 'Сохранить';
+            popups.editing.submitButton.textContent = 'Сохранить';
         });
 })
 
@@ -53,13 +53,13 @@ popups.imageUpdate = new PopupWithForm('.popup_type_avatar-exchange', (inputValu
         .then((res) => {
             userInfo.setUserAvatar(res.avatar);
             popups.imageUpdate.close();
-            popups.imageUpdate._formContainer.reset();
+            popups.imageUpdate.formContainer.reset();
         })
         .catch((err) => {
             console.log(err);
         })
         .finally(() => {
-            popups.imageUpdate._submitButton.textContent = 'Сохранить';
+            popups.imageUpdate.submitButton.textContent = 'Сохранить';
         })
 })
 
@@ -89,13 +89,13 @@ popups.adding = new PopupWithForm('.popup_type_add', (inputValues) => {
             console.log(cardElement, cardList)
             cardList.addItemToStart(cardElement);
             popups.adding.close();
-            popups.adding._formContainer.reset();
+            popups.adding.formContainer.reset();
         })
         .catch((err) => {
             console.log(err);
         })
         .finally(() => {
-            popups.adding._submitButton.textContent = 'Создать';
+            popups.adding.submitButton.textContent = 'Создать';
         });
 })
 
@@ -116,7 +116,7 @@ Promise.all([api.getDataUser(), api.getInitialCards()])
 
                 const cardElement = card.generate(info._id);
 
-                cardList.addItemToStart(cardElement);
+                cardList.addItemToEnd(cardElement);
             }
             },
             cardListSection
