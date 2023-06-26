@@ -13,14 +13,12 @@ const api = new Api(config);
 
 const card = new Card({});
 
-const cardList = new Section({}, cardListSection);
+let cardList = new Section({}, cardListSection);
 
 const userInfo = new UserInfo({
         nameSelector: '.profile__name',
         userInfoSelector: '.profile__description',
         imgSelector: '.profile__avatar'
-    }, (name, about) => {
-        return api.updateDataUser(name, about);
     }
 );
 
@@ -36,8 +34,9 @@ popups.removing = new PopupForRemoving('.popup_type_delete', () => {
 });
 
 popups.editing = new PopupWithForm('.popup_type_edit', (inputValues) => {
-    userInfo.setUserInfo(inputValues.forename, inputValues.description)
+    api.updateDataUser(inputValues.forename, inputValues.description)
         .then(res => {
+            userInfo.setUserInfo(res.name, res.about);
             popups.editing.close();
         })
         .catch((err) => {
@@ -109,7 +108,7 @@ Promise.all([api.getDataUser(), api.getInitialCards()])
         userInfo.setUserInfo(info.name, info.about);
         userInfo.ownerId = info._id;
         
-        const cardList = new Section({
+        cardList = new Section({
             items: initialCards,
             renderer: item => {
                 const card = createCardObj(item);

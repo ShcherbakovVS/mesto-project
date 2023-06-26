@@ -1,9 +1,8 @@
 export default class UserInfo {
-    constructor({ nameSelector, userInfoSelector, imgSelector }, userDataUpdatingAPI) {
+    constructor({ nameSelector, userInfoSelector, imgSelector }) {
         this.nameElement = document.querySelector(nameSelector);
         this.userInfoElement = document.querySelector(userInfoSelector);
         this.avatarElement = document.querySelector(imgSelector);
-        this._userDataUpdatingAPI = userDataUpdatingAPI;
         this.ownerId = '';
     }
 
@@ -18,7 +17,6 @@ export default class UserInfo {
     setUserInfo(name, about) {
         this.nameElement.textContent = name;
         this.userInfoElement.textContent = about;
-        return this._userDataUpdatingAPI(name, about);
     }
 
     setUserAvatar(src) {
