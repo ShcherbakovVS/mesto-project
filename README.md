@@ -1,4 +1,4 @@
-# Проект: Mesto. Взаимодействие с сервером и GitHub Pages
+# Проект Mesto на ООП
 
 [Ссылка на проект:](https://shcherbakovvs.github.io/mesto-project/)
 
